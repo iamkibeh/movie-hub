@@ -2,6 +2,10 @@ import hero1 from '../images/herosection/hero1.jpeg'
 import skullIsland from '../images/herosection/skull-island.jpeg'
 import hero3 from '../images/herosection/home3.jpg'
 import hero4 from '../images/herosection/home4.jpg'
+import harryPotter from '../images/herosection/harry-potter.jpeg'
+import lie from '../images/herosection/lie.jpeg'
+import mystery from '../images/herosection/mystery.jpeg'
+import oneMoreNight from '../images/herosection/one-more-night.jpeg'
 export const movies = [
   {
     id: 1,
@@ -59,31 +63,72 @@ export const movies = [
 export const upcome = [
   {
     id: 1,
-    cover: '../images/upcome/u1.jpg',
+    rating: 4.7,
+
+    cover: hero1,
     name: 'My office Boss',
     time: '2hr : 38mins',
   },
   {
     id: 2,
-    cover: '../images/upcome/u2.jpg',
+    rating: 4.7,
+
+    cover: hero3,
     name: 'Shadowe',
     time: '2hr : 38mins',
   },
   {
     id: 3,
-    cover: '../images/upcome/u3.jpg',
+    cover: hero1,
+    rating: 4.7,
     name: 'Another Danger',
     time: '2hr : 38mins',
   },
   {
     id: 4,
-    cover: '../images/upcome/u4.jpg',
+    cover: skullIsland,
+    rating: 4.7,
     name: 'One Man Army',
     time: '2hr : 38mins',
   },
   {
     id: 5,
-    cover: '../images/upcome/u5.jpg',
+    cover: hero4,
+    rating: 4.7,
+    name: 'Jumbo Queen',
+    time: '2hr : 38mins',
+  },
+  {
+    id: 6,
+    cover: hero4,
+    name: 'My office Boss',
+    rating: 4.7,
+    time: '2hr : 38mins',
+  },
+  {
+    id: 7,
+    cover: skullIsland,
+    name: 'Shadowe',
+    time: '2hr : 38mins',
+  },
+  {
+    id: 8,
+    cover: skullIsland,
+    name: 'Another Danger',
+    rating: 4.7,
+    time: '2hr : 38mins',
+  },
+  {
+    id: 9,
+    rating: 4.7,
+    cover: hero3,
+    name: 'One Man Army',
+    time: '2hr : 38mins',
+  },
+  {
+    id: 10,
+    cover: hero1,
+    rating: 4.7,
     name: 'Jumbo Queen',
     time: '2hr : 38mins',
   },
@@ -91,31 +136,31 @@ export const upcome = [
 export const latest = [
   {
     id: 1,
-    cover: '../images/upcome/u6.png',
+    cover: mystery,
     name: 'King of Jungle',
     time: '2hr : 38mins',
   },
   {
     id: 2,
-    cover: '../images/upcome/u7.jpg',
+    cover: lie,
     name: 'The illusion',
     time: '2hr : 38mins',
   },
   {
     id: 3,
-    cover: '../images/upcome/u1.jpg',
+    cover: harryPotter,
     name: 'Latest Movie',
     time: '2hr : 38mins',
   },
   {
     id: 4,
-    cover: '../images/upcome/u5.jpg',
+    cover: oneMoreNight,
     name: 'Latest two',
     time: '2hr : 38mins',
   },
   {
     id: 5,
-    cover: '../images/upcome/u4.jpg',
+    cover: skullIsland,
     name: 'Latest Three',
     time: '2hr : 38mins',
   },

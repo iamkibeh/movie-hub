@@ -1,11 +1,11 @@
 import { PlayArrowRounded } from '@mui/icons-material'
-import { Button, Rating, Stack, styled, Typography } from '@mui/material'
+import { Box, Button, Rating, Stack, styled, Typography } from '@mui/material'
 import React from 'react'
 // import playIcon from '../../assets/images/herosection/play-button.png'
 import play from '../../assets/images/herosection/play-icons8.png'
 
-const MovieDetailsContainer = styled('Box')({
-  backgroundColor: 'orange',
+const MovieDetailsContainer = styled(Box)({
+  // backgroundColor: 'orange',
 })
 
 const HomeCard = ({
