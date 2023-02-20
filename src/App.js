@@ -6,6 +6,7 @@ import SearchBar from './components/SearchBar'
 import Movies from './components/Movies'
 import LatestMovies from './components/LatestMovies'
 import UpcomingMovies from './components/UpcomingMovies'
+import Footer from './components/Footer'
 
 function App() {
   const [items, setItems] = useState(movies)
@@ -19,6 +20,7 @@ function App() {
       <Movies items={upcome} />
       <LatestMovies movies={latest} />
       <UpcomingMovies movies={latest} />
+      <Footer />
     </div>
   )
 }

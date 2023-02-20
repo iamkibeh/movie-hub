@@ -11,7 +11,7 @@ import {
 } from '@mui/icons-material'
 import { Avatar } from '@mui/material'
 
-const SampleNextArrow = (props) => {
+export const SampleNextArrow = (props) => {
   const { onClick } = props
   return (
     <div className='control-btn' onClick={onClick}>
@@ -31,7 +31,7 @@ const SampleNextArrow = (props) => {
   )
 }
 
-const SamplePrevArrow = (props) => {
+export const SamplePrevArrow = (props) => {
   const { onClick } = props
   return (
     <div

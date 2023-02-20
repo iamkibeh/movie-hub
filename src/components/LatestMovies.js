@@ -22,7 +22,6 @@ const LatestMovies = ({ movies }) => {
           slidesToScroll: 1,
           infinite: true,
           dots: true,
-          fade: true,
         },
       },
       {
@@ -48,6 +47,7 @@ const LatestMovies = ({ movies }) => {
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
+          fade: true,
         },
       },
     ],
