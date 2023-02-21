@@ -23,11 +23,15 @@ const SearchBar = () => {
               textTransform: 'uppercase',
               fontWeight: 700,
               letterSpacing: '1px',
+              color: '#fff',
             }}
           >
             Search for Movies and Series
           </Typography>
-          <FormControl sx={{ m: 1, width: '100%' }} variant='outlined'>
+          <FormControl
+            sx={{ m: 1, width: '100%', bgcolor: '#fff', borderRadius: '8px' }}
+            variant='outlined'
+          >
             <OutlinedInput
               endAdornment={
                 <InputAdornment position='end'>

@@ -78,7 +78,10 @@ const Footer = () => {
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi vitae
             minima est, adipisci dolores odit?
           </p>
-          <FormControl sx={{ m: 1, width: '100%' }} variant='outlined'>
+          <FormControl
+            sx={{ m: 1, width: '100%', bgcolor: 'white', borderRadius: '8px' }}
+            variant='outlined'
+          >
             <OutlinedInput
               endAdornment={
                 <InputAdornment position='end'>

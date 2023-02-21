@@ -31,7 +31,7 @@ const Movies = ({ items }) => {
           >
             <Typography
               variant='h5'
-              sx={{ fontWeight: '550' }}
+              sx={{ fontWeight: '550', color: '#fff' }}
               className='genre-title'
             >
               All Movies & Series

@@ -63,12 +63,16 @@ const LatestMovies = ({ movies }) => {
       >
         <Typography
           variant='h5'
-          sx={{ fontWeight: '550' }}
+          sx={{ fontWeight: '550', color: '#fff' }}
           className='genre-title'
         >
           Latest Movies
         </Typography>
-        <Button endIcon={<KeyboardDoubleArrowRight />} variant='contained'>
+        <Button
+          endIcon={<KeyboardDoubleArrowRight />}
+          variant='contained'
+          className='view-all-btn'
+        >
           View All
         </Button>
       </Stack>

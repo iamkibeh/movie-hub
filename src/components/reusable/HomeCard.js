@@ -34,7 +34,7 @@ const HomeCard = ({
             </Stack>
           </MovieDetailsContainer>
         </div>
-        <p>{desc}</p>
+        <Typography>{desc}</Typography>
         <div className='cast'>
           <h4>
             <span>Starring </span>

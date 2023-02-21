@@ -14,7 +14,7 @@ import MenuItem from '@mui/material/MenuItem'
 import AdbIcon from '@mui/icons-material/Adb'
 import { Search } from '@mui/icons-material'
 import { Stack } from '@mui/material'
-import logo from '../../src/assets/images/icons8-soonvibes-50.png'
+import logo from '../../src/assets/images/movie-hub-logo.png'
 
 const pages = ['Home', 'Movies & TV-Shows', 'Contact Us']
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout']
@@ -39,7 +39,11 @@ function Navbar() {
   }
 
   return (
-    <AppBar position='static'>
+    <AppBar
+      position='sticky'
+      sx={{ bgcolor: '#02020f', borderBottom: '1px solid gray' }}
+      className='navbar-container'
+    >
       <Container maxWidth='xl'>
         <Toolbar disableGutters>
           {/* <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} /> */}
@@ -119,7 +123,14 @@ function Navbar() {
           >
             MovieHub
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+          <Box
+            sx={{
+              flexGrow: 1,
+              display: { xs: 'none', md: 'flex' },
+              // bgcolor: 'orange',
+              justifyContent: 'center',
+            }}
+          >
             {pages.map((page) => (
               <Button
                 key={page}
