@@ -1,7 +1,7 @@
 import HeroSection from './components/HeroSection'
 // import Navbar from './components/Navbar'
 import { latest, movies, upcome } from './assets/data/dummyData'
-import { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Movies from './components/Movies'
 import LatestMovies from './components/LatestMovies'
 import UpcomingMovies from './components/UpcomingMovies'
@@ -12,6 +12,7 @@ import Layout from './components/Layout'
 import MovieInfo from './components/reusable/MovieInfo'
 import ContactUs from './components/ContactUs'
 import Popular from './components/Popular'
+import { baseUrl } from './apiConstants'
 
 const theme = createTheme({
   pallette: {
@@ -27,13 +28,27 @@ const theme = createTheme({
     fontFamily: 'Nunito, sans-serif',
   },
 })
-function App() {
-  const [items, setItems] = useState(movies)
-  // console.log(items)
-  const key = process.env.REACT_APP_API_KEY
-  console.log(key)
 
-  console.log(process.env)
+function App() {
+  const [popular, setPopular] = useState([])
+  const [items, setItems] = useState(movies)
+  useEffect(() => {
+    fetch(`${baseUrl}/movie/top_rated?language=en-US&page=1`, {
+      headers: {
+        Authorization:
+          'Bearer ' +
+          'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1NjA2OTZkMDNjYmM3ZjE0ZmIxMDMwN2JmMGZhZGVkNiIsInN1YiI6IjYzZjYxNjRjOGMyMmMwMDBiMjk4YmI1MCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.9dDtvgVzb-KYALMBR4e22YqXZfbTJSORaCqyMu7zD0o',
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        // console.log(data.results)
+        setPopular(data.results)
+      })
+  }, [])
+
+  // console.log(items)
+
   return (
     <>
       <ThemeProvider theme={theme}>
@@ -52,7 +67,7 @@ function App() {
             element={
               <Layout>
                 {/* <Navbar /> */}
-                <HeroSection items={items} />
+                <HeroSection items={popular} />
                 <LatestMovies movies={latest} />
                 <UpcomingMovies movies={latest} />
                 <Popular movies={latest} />
