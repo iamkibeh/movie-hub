@@ -15,13 +15,19 @@ import AdbIcon from '@mui/icons-material/Adb'
 import { Search } from '@mui/icons-material'
 import { Stack } from '@mui/material'
 import logo from '../../src/assets/images/movie-hub-logo.png'
+import { useNavigate } from 'react-router-dom'
 
-const pages = ['Home', 'Movies & TV-Shows', 'Contact Us']
+const pages = [
+  { name: 'Home', route: '/' },
+  { name: 'Movies & TV-Shows', route: '/movies' },
+  { name: 'Contact Us', route: '/contact' },
+]
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout']
 
 function Navbar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null)
   const [anchorElUser, setAnchorElUser] = React.useState(null)
+  const navigate = useNavigate()
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget)
@@ -36,6 +42,12 @@ function Navbar() {
 
   const handleCloseUserMenu = () => {
     setAnchorElUser(null)
+  }
+
+  const handlePageChange = (page) => {
+    setAnchorElUser(null)
+    // console.log(page)
+    navigate(`${page}`)
   }
 
   return (
@@ -98,8 +110,11 @@ function Navbar() {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign='center'>{page}</Typography>
+                <MenuItem
+                  key={page.name}
+                  onClick={() => handlePageChange(page.route)}
+                >
+                  <Typography textAlign='center'>{page.name}</Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -133,11 +148,11 @@ function Navbar() {
           >
             {pages.map((page) => (
               <Button
-                key={page}
-                onClick={handleCloseNavMenu}
+                key={page.name}
+                onClick={() => handlePageChange(page.route)}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
-                {page}
+                {page.name}
               </Button>
             ))}
           </Box>

@@ -6,6 +6,9 @@ import { styled } from '@mui/material/styles'
 import MovieCard from './reusable/MovieCard'
 import '../styles/movies.css'
 import { IconButton, Stack, Typography } from '@mui/material'
+import SearchBar from './SearchBar'
+import Navbar from './Navbar'
+import Footer from './Footer'
 
 const Label = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -18,8 +21,11 @@ const Label = styled(Paper)(({ theme }) => ({
 }))
 
 const Movies = ({ items }) => {
+  // console.log(items)
   return (
     <>
+      <Navbar />
+      <SearchBar />
       <div className='movies-container'>
         <Box sx={{ width: '80%', m: 'auto' }}>
           <Stack
@@ -100,6 +106,7 @@ const Movies = ({ items }) => {
           </Masonry>
         </Box>
       </div>
+      <Footer />
     </>
   )
 }
