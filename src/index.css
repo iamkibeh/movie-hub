@@ -18,3 +18,67 @@ body {
   background-color: #fff !important;
   color: #e50813 !important;
 }
+
+
+
+/* media queries */
+
+@media screen and (max-width: 768px) {
+  .top-footer {
+    align-items: center;
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  .top-footer>section {
+    text-align: center;
+  }
+
+  .bottom-footer {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 600px) {
+
+  .home .content {
+    /* padding: auto !important; */
+  }
+
+  .rating-section {
+    flex-direction: column !important;
+    text-align: center !important;
+    margin-bottom: 2rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .homeContainer h1 {
+    font-size: 32px !important;
+    text-align: center !important;
+  }
+
+  .home {
+    /* background-color: #e50813; */
+  }
+
+  .hero-card-container {
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  .hero-card-container .content {
+    padding: 50px !important;
+    padding-top: 6rem !important;
+  }
+
+  .css-z5gn4u-MuiSvgIcon-root {
+    display: none !important;
+  }
+
+  .css-18bu605-MuiTypography-root {
+    letter-spacing: 1px !important;
+    font-size: 12px !important;
+  }
+}

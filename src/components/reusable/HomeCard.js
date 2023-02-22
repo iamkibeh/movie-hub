@@ -25,7 +25,11 @@ const HomeCard = ({
             <Stack
               direction={'row'}
               spacing={2}
-              sx={{ display: 'flex', alignItems: 'center' }}
+              sx={{
+                display: { lg: 'flex' },
+                alignItems: 'center',
+              }}
+              className='rating-section'
             >
               <Rating name='read-only' value={4} readOnly />
               <label>{rating}(Imdb)</label>

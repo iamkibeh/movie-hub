@@ -11,6 +11,7 @@ import { Route, Routes } from 'react-router-dom'
 import Layout from './components/Layout'
 import MovieInfo from './components/reusable/MovieInfo'
 import ContactUs from './components/ContactUs'
+import Popular from './components/Popular'
 
 const theme = createTheme({
   pallette: {
@@ -29,7 +30,10 @@ const theme = createTheme({
 function App() {
   const [items, setItems] = useState(movies)
   // console.log(items)
+  const key = process.env.REACT_APP_API_KEY
+  console.log(key)
 
+  console.log(process.env)
   return (
     <>
       <ThemeProvider theme={theme}>
@@ -51,6 +55,7 @@ function App() {
                 <HeroSection items={items} />
                 <LatestMovies movies={latest} />
                 <UpcomingMovies movies={latest} />
+                <Popular movies={latest} />
                 {/* <Footer /> */}
               </Layout>
             }

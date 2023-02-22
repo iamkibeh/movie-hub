@@ -173,18 +173,19 @@
         position: relative;
         margin: 0;
         margin-top: -7vh;
-        height: 60vh !important;
+        /* height: 60vh !important; */
+        padding-bottom: 20vh;
     }
 
     .cover-image-cont img {
         width: 100vw;
-        height: 70vh !important;
+        /* height: 70vh !important; */
     }
 
 
     .home .content {
         flex-direction: column;
-        padding: 50px;
+        /* padding: 50px; */
     }
 
     .home .row {
@@ -197,5 +198,9 @@
 
     .mragin {
         margin-top: 0% !important;
+    }
+
+    .genre-title {
+        z-index: 999;
     }
 }

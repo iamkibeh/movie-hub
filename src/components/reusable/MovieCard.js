@@ -3,8 +3,10 @@ import { Box, Rating, Stack, styled, Typography } from '@mui/material'
 import React from 'react'
 
 const BoxCard = styled(Box)({
-  width: '250px',
+  width: '320px',
   height: '250px',
+  margin: 'auto',
+
   // backgroundColor: 'orange',
 })
 const MovieCard = ({
