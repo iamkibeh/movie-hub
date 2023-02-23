@@ -1,15 +1,27 @@
-import React, { useEffect, useState } from 'react'
+import React, { forwardRef, useEffect, useState } from 'react'
 import Box from '@mui/material/Box'
 import Paper from '@mui/material/Paper'
 import Masonry from '@mui/lab/Masonry'
 import { styled } from '@mui/material/styles'
 import MovieCard from './reusable/MovieCard'
 import '../styles/movies.css'
-import { IconButton, Stack, Typography } from '@mui/material'
+import {
+  Button,
+  IconButton,
+  Popover,
+  Snackbar,
+  Stack,
+  Typography,
+  Alert,
+  AlertProps,
+} from '@mui/material'
 import SearchBar from './SearchBar'
 import Navbar from './Navbar'
 import Footer from './Footer'
 
+const SnackbarAlert = forwardRef(function SnackbarAlert(props, ref) {
+  return <Alert elevation={6} ref={ref} {...props} />
+})
 const Label = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
   ...theme.typography.body2,
@@ -20,17 +32,46 @@ const Label = styled(Paper)(({ theme }) => ({
   borderBottomRightRadius: 0,
 }))
 
+// function Alert(props) {
+//   return <MuiAlert elevation={6} variant='filled' {...props} />
+// }
+
 const Movies = ({ movies, setAllMovies }) => {
-  const [searchResults, setSearchResults] = useState('')
+  const [searchResults, setSearchResults] = useState([])
+  const [open, setOpen] = useState(false)
 
   // console.log(items)
   // console.log(movies)
-  console.log(searchResults)
+  // console.log(searchResults)
 
+  const handleSnackbarClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return
+    }
+    setOpen(false)
+  }
+  useEffect(() => {
+    searchResults && searchResults.length < 1 && setOpen(true)
+  }, [searchResults])
+
+  console.log(searchResults)
   return (
     <>
       <Navbar />
       <SearchBar movies={movies} setSearchResults={setSearchResults} />
+      {/* <Button onClick={() => setOpen(!open)}>Submit</Button> */}
+      <Snackbar
+        open={open}
+        autoHideDuration={3000}
+        onClose={handleSnackbarClose}
+        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+      >
+        {/* <Alert onClose={handleSnackbarClose} severity='success'> */}
+        <SnackbarAlert onClose={handleSnackbarClose} severity='error'>
+          Movie unavailable! Try again.
+        </SnackbarAlert>
+        {/* </Alert> */}
+      </Snackbar>
       <div className='movies-container'>
         <Box sx={{ width: '80%', m: 'auto' }}>
           <Stack
