@@ -7,10 +7,17 @@ import {
   OutlinedInput,
   Typography,
 } from '@mui/material'
-import React from 'react'
+import React, { useState } from 'react'
 import '../styles/search.css'
 
-const SearchBar = () => {
+const SearchBar = ({ movies, setSearchResults }) => {
+  const handleMovieSearch = (e) => {
+    const searchedMovie = movies.filter((movie) =>
+      movie.title.toLowerCase().includes(e.target.value.toLowerCase())
+    )
+    setSearchResults(searchedMovie)
+  }
+
   return (
     <>
       <div className='search-container'>
@@ -39,6 +46,7 @@ const SearchBar = () => {
                 </InputAdornment>
               }
               placeholder='Enter movie or series title'
+              onChange={(e) => handleMovieSearch(e)}
             />
           </FormControl>
         </Box>

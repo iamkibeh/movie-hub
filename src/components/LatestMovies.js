@@ -53,7 +53,7 @@ const LatestMovies = ({ movies }) => {
   //     },
   //   ],
   // }
-  console.log(movies)
+  // console.log(movies)
   return (
     <Container>
       <Stack

@@ -34,7 +34,7 @@ const Popular = ({ movies }) => {
 
         <Stack mt={3} mb={3}>
           <div className='content'>
-            <Slider {...settings}>
+            <Slider {...settings} autoplay autoplaySpeed={4000} pauseOnHover>
               {movies.length > 0 &&
                 movies.map((movie) => {
                   return (

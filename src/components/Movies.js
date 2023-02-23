@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Box from '@mui/material/Box'
 import Paper from '@mui/material/Paper'
 import Masonry from '@mui/lab/Masonry'
@@ -20,13 +20,17 @@ const Label = styled(Paper)(({ theme }) => ({
   borderBottomRightRadius: 0,
 }))
 
-const Movies = ({ movies }) => {
+const Movies = ({ movies, setAllMovies }) => {
+  const [searchResults, setSearchResults] = useState('')
+
   // console.log(items)
   // console.log(movies)
+  console.log(searchResults)
+
   return (
     <>
       <Navbar />
-      <SearchBar />
+      <SearchBar movies={movies} setSearchResults={setSearchResults} />
       <div className='movies-container'>
         <Box sx={{ width: '80%', m: 'auto' }}>
           <Stack
@@ -91,8 +95,14 @@ const Movies = ({ movies }) => {
               <MovieCard key={item.id} item={item} />
             ))}
             */}
-            {movies.length > 0 &&
-              movies.map((movie) => <MovieCard key={movie.id} movie={movie} />)}
+
+            {searchResults.length > 0
+              ? searchResults.map((movie) => (
+                  <MovieCard key={movie.id} movie={movie} />
+                ))
+              : movies.map((movie) => (
+                  <MovieCard key={movie.id} movie={movie} />
+                ))}
           </Masonry>
         </Box>
       </div>

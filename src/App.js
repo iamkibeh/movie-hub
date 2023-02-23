@@ -133,7 +133,10 @@ function App() {
               </Layout>
             }
           />
-          <Route path='/movies' element={<Movies movies={allMovies} />}>
+          <Route
+            path='/movies'
+            element={<Movies movies={allMovies} setAllMovies={setAllMovies} />}
+          >
             <Route path=':id' element={<MovieInfo />} />
           </Route>
         </Routes>
