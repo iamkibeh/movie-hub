@@ -25,18 +25,21 @@ const HomeCard = ({
   },
 }) => {
   const [movieDetails, setMovieDetails] = useState(null)
-  console.log(movieDetails)
+  // console.log(movieDetails)
 
   const cover = `${imageBaseURL}${poster_path}`
 
   useEffect(() => {
-    fetch(`${baseUrl}/movie/${id}?language=en-US&page=1`, {
-      headers: {
-        Authorization:
-          'Bearer ' +
-          'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1NjA2OTZkMDNjYmM3ZjE0ZmIxMDMwN2JmMGZhZGVkNiIsInN1YiI6IjYzZjYxNjRjOGMyMmMwMDBiMjk4YmI1MCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.9dDtvgVzb-KYALMBR4e22YqXZfbTJSORaCqyMu7zD0o',
-      },
-    })
+    fetch(
+      `${baseUrl}/movie/${id}?language=en-US&page=1&append_to_response=credits`,
+      {
+        headers: {
+          Authorization:
+            'Bearer ' +
+            'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1NjA2OTZkMDNjYmM3ZjE0ZmIxMDMwN2JmMGZhZGVkNiIsInN1YiI6IjYzZjYxNjRjOGMyMmMwMDBiMjk4YmI1MCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.9dDtvgVzb-KYALMBR4e22YqXZfbTJSORaCqyMu7zD0o',
+        },
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         // console.log(data)
@@ -84,6 +87,12 @@ const HomeCard = ({
           <h4>
             <span>Starring: </span>
             {/* {starring} */}
+            {movieDetails &&
+              movieDetails.credits.cast
+                .filter((actor) => actor.order < 8)
+                .map((actor) => actor.name)
+                .join(', ')}
+            {movieDetails && movieDetails.credits.cast.length > 8 && '...'}
           </h4>
           <h4>
             <span>Genres: </span>
@@ -94,7 +103,9 @@ const HomeCard = ({
           <h4>
             <span>Tagline: </span>
             {/* {tags} */}
-            {movieDetails && movieDetails.tagline} ?
+            {movieDetails && movieDetails.tagline.length
+              ? movieDetails.tagline
+              : 'N/A'}
           </h4>
         </div>
         <Button

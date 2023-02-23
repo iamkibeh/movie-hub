@@ -20,8 +20,9 @@ const Label = styled(Paper)(({ theme }) => ({
   borderBottomRightRadius: 0,
 }))
 
-const Movies = ({ items }) => {
+const Movies = ({ movies }) => {
   // console.log(items)
+  // console.log(movies)
   return (
     <>
       <Navbar />
@@ -86,23 +87,12 @@ const Movies = ({ items }) => {
             </Stack>
           </Stack>
           <Masonry columns={{ lg: 4, sm: 3, xs: 1 }} spacing={2}>
-            {items.map(
-              (item) => (
-                <MovieCard key={item.id} item={item} />
-              )
-              /* <img
-                  src={`${item.img}?w=162&auto=format`}
-                  srcSet={`${item.img}?w=162&auto=format&dpr=2 2x`}
-                  alt={item.title}
-                  loading='lazy'
-                  style={{
-                    borderBottomLeftRadius: 4,
-                    borderBottomRightRadius: 4,
-                    display: 'block',
-                    width: '100%',
-                  }}
-                /> */
-            )}
+            {/* {items.map((item) => (
+              <MovieCard key={item.id} item={item} />
+            ))}
+            */}
+            {movies.length > 0 &&
+              movies.map((movie) => <MovieCard key={movie.id} movie={movie} />)}
           </Masonry>
         </Box>
       </div>

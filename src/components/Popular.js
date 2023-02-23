@@ -1,9 +1,10 @@
 import { KeyboardDoubleArrowRight } from '@mui/icons-material'
 import { Button, Container, Stack, Typography } from '@mui/material'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Slider from 'react-slick'
 import { settings } from './UpcomingMovies'
 import MovieCard from './reusable/MovieCard'
+import { baseUrl } from '../apiConstants'
 
 const Popular = ({ movies }) => {
   return (
@@ -34,13 +35,14 @@ const Popular = ({ movies }) => {
         <Stack mt={3} mb={3}>
           <div className='content'>
             <Slider {...settings}>
-              {movies.map((item) => {
-                return (
-                  <>
-                    <MovieCard key={item.id} item={item} />
-                  </>
-                )
-              })}
+              {movies.length > 0 &&
+                movies.map((movie) => {
+                  return (
+                    <>
+                      <MovieCard key={movie.id} movie={movie} />
+                    </>
+                  )
+                })}
             </Slider>
           </div>
         </Stack>

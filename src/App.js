@@ -31,6 +31,10 @@ const theme = createTheme({
 
 function App() {
   const [popular, setPopular] = useState([])
+  const [allMovies, setAllMovies] = useState([])
+  const [latestMovies, setLatestMovies] = useState([])
+  const [popularMovies, setPopularMovies] = useState([])
+
   const [items, setItems] = useState(movies)
   useEffect(() => {
     fetch(`${baseUrl}/movie/top_rated?language=en-US&page=1`, {
@@ -47,7 +51,51 @@ function App() {
       })
   }, [])
 
-  // console.log(items)
+  // latest movies effect
+
+  useEffect(() => {
+    fetch(`${baseUrl}/movie/now_playing?language=en-US`, {
+      headers: {
+        Authorization:
+          'Bearer ' +
+          'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1NjA2OTZkMDNjYmM3ZjE0ZmIxMDMwN2JmMGZhZGVkNiIsInN1YiI6IjYzZjYxNjRjOGMyMmMwMDBiMjk4YmI1MCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.9dDtvgVzb-KYALMBR4e22YqXZfbTJSORaCqyMu7zD0o',
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        // console.log(data)
+        setAllMovies(data.results)
+        setLatestMovies(
+          data.results.filter(
+            (movie) => parseInt(movie.release_date.split('-')[0]) > 2022
+          )
+        )
+      })
+  }, [])
+
+  // console.log(latestMovies)
+
+  // popular movies
+
+  useEffect(() => {
+    fetch(
+      `${baseUrl}/movie/popular?language=en-US&page=1&append_to_response=credits`,
+      {
+        headers: {
+          Authorization:
+            'Bearer ' +
+            'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1NjA2OTZkMDNjYmM3ZjE0ZmIxMDMwN2JmMGZhZGVkNiIsInN1YiI6IjYzZjYxNjRjOGMyMmMwMDBiMjk4YmI1MCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.9dDtvgVzb-KYALMBR4e22YqXZfbTJSORaCqyMu7zD0o',
+        },
+      }
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        // console.log(data)
+        setPopularMovies(data)
+      })
+  }, [])
+
+  // console.log(popularMovies)
 
   return (
     <>
@@ -68,9 +116,9 @@ function App() {
               <Layout>
                 {/* <Navbar /> */}
                 <HeroSection items={popular} />
-                <LatestMovies movies={latest} />
+                <LatestMovies movies={latestMovies} />
                 <UpcomingMovies movies={latest} />
-                <Popular movies={latest} />
+                <Popular movies={popular} />
                 {/* <Footer /> */}
               </Layout>
             }
@@ -85,7 +133,7 @@ function App() {
               </Layout>
             }
           />
-          <Route path='/movies' element={<Movies items={upcome} />}>
+          <Route path='/movies' element={<Movies movies={allMovies} />}>
             <Route path=':id' element={<MovieInfo />} />
           </Route>
         </Routes>

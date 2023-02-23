@@ -53,7 +53,7 @@ const LatestMovies = ({ movies }) => {
   //     },
   //   ],
   // }
-  // console.log(movies)
+  console.log(movies)
   return (
     <Container>
       <Stack
@@ -80,8 +80,8 @@ const LatestMovies = ({ movies }) => {
 
       <Stack mt={2}>
         <Slider {...settings}>
-          {movies &&
-            movies.map((movie) => <MovieCard key={movie.id} item={movie} />)}
+          {movies.length > 0 &&
+            movies.map((movie) => <MovieCard key={movie.id} movie={movie} />)}
         </Slider>
       </Stack>
     </Container>
@@ -94,6 +94,9 @@ const settings = {
   dots: false,
   infinite: true,
   speed: 500,
+  autoplay: true,
+  autoplaySpeed: 4000,
+  pauseOnHover: true,
   slidesToShow: 3,
   slidesToScroll: 1,
   nextArrow: <SampleNextArrow />,
