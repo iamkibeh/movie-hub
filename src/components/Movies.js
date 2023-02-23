@@ -1,20 +1,9 @@
 import React, { forwardRef, useEffect, useState } from 'react'
 import Box from '@mui/material/Box'
-import Paper from '@mui/material/Paper'
 import Masonry from '@mui/lab/Masonry'
-import { styled } from '@mui/material/styles'
 import MovieCard from './reusable/MovieCard'
 import '../styles/movies.css'
-import {
-  Button,
-  IconButton,
-  Popover,
-  Snackbar,
-  Stack,
-  Typography,
-  Alert,
-  AlertProps,
-} from '@mui/material'
+import { IconButton, Snackbar, Stack, Typography, Alert } from '@mui/material'
 import SearchBar from './SearchBar'
 import Navbar from './Navbar'
 import Footer from './Footer'
@@ -22,19 +11,6 @@ import Footer from './Footer'
 const SnackbarAlert = forwardRef(function SnackbarAlert(props, ref) {
   return <Alert elevation={6} ref={ref} {...props} />
 })
-const Label = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-  ...theme.typography.body2,
-  padding: theme.spacing(0.5),
-  textAlign: 'center',
-  color: theme.palette.text.secondary,
-  borderBottomLeftRadius: 0,
-  borderBottomRightRadius: 0,
-}))
-
-// function Alert(props) {
-//   return <MuiAlert elevation={6} variant='filled' {...props} />
-// }
 
 const Movies = ({ movies, setAllMovies }) => {
   const [searchResults, setSearchResults] = useState([])
@@ -54,23 +30,19 @@ const Movies = ({ movies, setAllMovies }) => {
     searchResults && searchResults.length < 1 && setOpen(true)
   }, [searchResults])
 
-  console.log(searchResults)
   return (
     <>
       <Navbar />
       <SearchBar movies={movies} setSearchResults={setSearchResults} />
-      {/* <Button onClick={() => setOpen(!open)}>Submit</Button> */}
       <Snackbar
         open={open}
         autoHideDuration={3000}
         onClose={handleSnackbarClose}
         anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
       >
-        {/* <Alert onClose={handleSnackbarClose} severity='success'> */}
         <SnackbarAlert onClose={handleSnackbarClose} severity='error'>
           Movie unavailable! Try again.
         </SnackbarAlert>
-        {/* </Alert> */}
       </Snackbar>
       <div className='movies-container'>
         <Box sx={{ width: '80%', m: 'auto' }}>
@@ -91,7 +63,12 @@ const Movies = ({ movies, setAllMovies }) => {
             {/* <Button endIcon={<KeyboardDoubleArrowRight />} variant='contained'>
               View All
             </Button> */}
-            <Stack direction={'row'} alignItems='center'>
+            <Stack
+              direction={'row'}
+              alignItems='center'
+              // bgcolor={'orange'}
+              color='white'
+            >
               <IconButton>
                 <svg
                   xmlns='http://www.w3.org/2000/svg'
@@ -102,6 +79,7 @@ const Movies = ({ movies, setAllMovies }) => {
                   className='w-6 h-6'
                   width={15}
                   height={15}
+                  color='white'
                 >
                   <path
                     strokeLinecap='round'
@@ -121,6 +99,7 @@ const Movies = ({ movies, setAllMovies }) => {
                   className='w-6 h-6'
                   width={15}
                   height={15}
+                  color='white'
                 >
                   <path
                     strokeLinecap='round'
