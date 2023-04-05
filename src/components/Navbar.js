@@ -16,6 +16,9 @@ import { Search } from '@mui/icons-material'
 import { Stack } from '@mui/material'
 import logo from '../../src/assets/images/movie-hub-logo.png'
 import { useNavigate } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { logout } from '../features/auth/authSlice'
+import { NavLink } from 'react-router-dom'
 
 const pages = [
   { name: 'Home', route: '/' },
@@ -28,6 +31,12 @@ function Navbar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null)
   const [anchorElUser, setAnchorElUser] = React.useState(null)
   const navigate = useNavigate()
+
+  // redux state
+  const { userInfo } = useSelector((state) => state.auth)
+  const dispatch = useDispatch()
+
+  // console.log('I found one userInfo', userInfo)
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget)
@@ -48,6 +57,13 @@ function Navbar() {
     setAnchorElUser(null)
     // console.log(page)
     navigate(`${page}`)
+  }
+
+  const handleSettingChange = (setting) => {
+    if (setting === 'Logout') {
+      dispatch(logout())
+      navigate('/login')
+    }
   }
 
   return (
@@ -178,9 +194,19 @@ function Navbar() {
               <Search />
             </Stack>
             <Tooltip title='Open settings'>
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt='Remy Sharp' src='/static/images/avatar/2.jpg' />
-              </IconButton>
+              {
+                // <IconButton
+                userInfo.user ? (
+                  <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                    <Avatar
+                      alt={userInfo.user.first_name}
+                      src={userInfo.user.first_name[0]}
+                    />
+                  </IconButton>
+                ) : (
+                  <NavLink to='/login'>Log in</NavLink>
+                )
+              }
             </Tooltip>
             <Menu
               sx={{ mt: '45px' }}
@@ -200,7 +226,12 @@ function Navbar() {
             >
               {settings.map((setting) => (
                 <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign='center'>{setting}</Typography>
+                  <Typography
+                    textAlign='center'
+                    onClick={() => handleSettingChange(setting)}
+                  >
+                    {setting}
+                  </Typography>
                 </MenuItem>
               ))}
             </Menu>

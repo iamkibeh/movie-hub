@@ -10,6 +10,7 @@ import {
 } from '@mui/material'
 import React from 'react'
 import { BsGlobe2 } from 'react-icons/bs'
+import AboutMovie from './reusable/AboutMovie'
 
 const ContactUs = () => {
   return (
@@ -129,6 +130,8 @@ const ContactUs = () => {
           </Stack>
         </Container>
       </div>
+
+      <AboutMovie />
     </>
   )
 }
