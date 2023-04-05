@@ -13,6 +13,8 @@ import MovieInfo from './components/reusable/MovieInfo'
 import ContactUs from './components/ContactUs'
 import Popular from './components/Popular'
 import { baseUrl } from './apiConstants'
+import Signup from './components/Signup'
+import Login from './components/Login'
 
 const theme = createTheme({
   pallette: {
@@ -139,6 +141,10 @@ function App() {
           >
             <Route path=':id' element={<MovieInfo />} />
           </Route>
+          <Route path='/signup' element={<Signup />} />
+          <Route path='/login' element={<Login />} />
+
+          <Route path='*' element={<h1>404</h1>} />
         </Routes>
       </ThemeProvider>
     </>
